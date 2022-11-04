@@ -32,7 +32,7 @@ Sometimes during uploading code to Arduino board you may face some issues -- the
 BOM:
 | Qty	| Reference(s) | Description |
 |-----|--------------|-------------|
-|2 | C1, C2	| 100nF	ceramic capacitors
+|2 | C1, C2	| ceramic capacitors 100nF |
 |1 |	J1|	DB9 Male Connector <a href="https://www.tme.eu/pl/en/details/ld09p13a4gx00lf/d-sub-plugs-and-sockets/amphenol-communications-solutions/">   LD09P13A4GX00LF Amphenol</a> |
 |1 |	J2|	2x4 Pinheader. pitch terminal: 2.54mm |
 |2 | R1, R2	| resistors 10KΩ |
