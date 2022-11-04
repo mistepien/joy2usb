@@ -70,12 +70,13 @@ if (C64Mode){ //FOR C64 -- INPUT + PULL_DOWN (via IC4066) -- INPUT IS SET ONE LI
   Joystick.begin(false);
   Joystick.setXAxisRange(-1, 1);
   Joystick.setYAxisRange(-1, 1);
+  Joystick.setXAxis(0);
+  Joystick.setYAxis(0);
+  
   delay(3000); /*very ugly and dirty hack
                 without that delay() joystick will not
                 be centered at the beginning
                 */
-  Joystick.setXAxis(0);
-  Joystick.setYAxis(0); 
   Joystick.sendState();
 
 /*turn off RX and TX LEDS
