@@ -126,7 +126,7 @@ if ( changedAxises || changedButtons ) {
 unsigned long current_time = millis(); //ONE common millis() for AXISES AND BUTTONS SECTIONS
 
 if ( changedAxises ) { //AXISES SECTION
-prev_axises = current_axises;
+
 
 byte axisXchanged = 0;
 byte axisYchanged = 0;
@@ -135,6 +135,7 @@ byte axisYchanged = 0;
         if ((current_state != prev_axis_state[index]) && (current_time - prev_axis_time[index] > minimal_axis_time)) {
           prev_axis_state[index] = current_state;
           prev_axis_time[index] = current_time;
+          prev_axises = current_axises;
           switch (index) {
             case 0: //UP
               JOY_U = current_state; axisYchanged = 1;
@@ -148,7 +149,7 @@ byte axisYchanged = 0;
             case 3: //RIGHT
               JOY_R = current_state; axisXchanged = 1;
               break;
-          }      
+          }
         }
     }
     if ( axisYchanged ) {
@@ -166,13 +167,13 @@ byte axisYchanged = 0;
     }  
 } 
 
-  if ( changedButtons ) { //BUTTONS SECTION
-    prev_buttons = current_buttons;
+  if ( changedButtons ) { //BUTTONS SECTION    
     for (byte index = 0; index < 3; index++) {
         current_state = bitRead(current_buttons,index);
         if ((current_state != prev_button_state[index]) && (current_time - prev_button_time[index] > minimal_button_time)) {
           prev_button_state[index] = current_state;
           prev_button_time[index] = current_time;
+          prev_buttons = current_buttons;
           Joystick.setButton(index, current_state);
       }
     }

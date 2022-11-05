@@ -115,7 +115,6 @@ byte current_joy=pind | pinb; //PUT TOGETHER pinb and pind, bit7(out of 0-7) is 
 
 if ( current_joy ^ prev_joy ) {
 //  Serial.println(current_joy, BIN);
-prev_joy = current_joy;
 unsigned long current_button_time = millis();
 int8_t current_button_state;
   
@@ -153,6 +152,7 @@ int8_t current_button_state;
       {
           prev_button_state[index] = current_button_state;
           prev_button_time[index] = current_button_time;
+          prev_joy = current_joy;
           pushbutton(index,current_button_state);       
       }
     }
