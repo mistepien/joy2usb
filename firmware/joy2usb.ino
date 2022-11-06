@@ -90,9 +90,6 @@ bitClear(DDRB,0);
 }
 
 
-
-byte prev_button_state[3] = { 0, 0, 0};
-byte prev_axis_state[4] = { 0, 0, 0, 0};
 unsigned long prev_button_time[3] = { 0, 0, 0 };
 unsigned long prev_axis_time[4] = { 0, 0, 0, 0 };
 byte JOY_D = 0;
@@ -131,11 +128,12 @@ if ( changedAxises ) { //AXISES SECTION
 byte axisXchanged = 0;
 byte axisYchanged = 0;
     for (byte index = 0; index < 4; index++) {
-        current_state = bitRead(current_axises,index);
-        if ((current_state != prev_axis_state[index]) && (current_time - prev_axis_time[index] > minimal_axis_time)) {
-          prev_axis_state[index] = current_state;
+      if (bitRead(changedAxises,index)) {
+        if (current_time - prev_axis_time[index] > minimal_axis_time) {
           prev_axis_time[index] = current_time;
           prev_axises = current_axises;
+
+          current_state = bitRead(current_axises,index);
           switch (index) {
             case 0: //UP
               JOY_U = current_state; axisYchanged = 1;
@@ -151,6 +149,7 @@ byte axisYchanged = 0;
               break;
           }
         }
+      }
     }
     if ( axisYchanged ) {
       if ( ( JOY_U ) && ( JOY_D ) ) {
@@ -169,15 +168,16 @@ byte axisYchanged = 0;
 
   if ( changedButtons ) { //BUTTONS SECTION    
     for (byte index = 0; index < 3; index++) {
-        current_state = bitRead(current_buttons,index);
-        if ((current_state != prev_button_state[index]) && (current_time - prev_button_time[index] > minimal_button_time)) {
-          prev_button_state[index] = current_state;
+       if (bitRead(changedButtons,index)) {
+        if (current_time - prev_button_time[index] > minimal_button_time) {
           prev_button_time[index] = current_time;
           prev_buttons = current_buttons;
-          Joystick.setButton(index, current_state);
-      }
-    }
 
+          current_state = bitRead(current_buttons,index);
+          Joystick.setButton(index, current_state);
+        }
+       }
+    }
   } 
    Joystick.sendState(); //ONE common send.State for AXISES AND BUTTONS SECTIONS
 }
