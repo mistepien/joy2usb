@@ -16,7 +16,7 @@ are debounced separatelly, while in in <a href="https://github.com/mistepien/joy
 
 The adapter has a toggle C64/Amiga for choosing C64 or Amiga approach for FIRE2/FIRE3.
 
-According to <a href="http://wiki.icomp.de/wiki/DE-9_Joystick"> wiki.icomp.de website about DE-9 joystick</a>, FIRE2/FIRE3 are pulled to VCC in case of C64 and to GND in case of Amiga. That is not an issue for joy2usb. Switch have to be toggled when adapter is off. Amiga approach is default -- if in your joystick FIRE2/FIRE3 are pulled to GND, and C64 approach is redundant for you than you do not need to solder <b>U2, C1, C2, R1, R2</b> and <b>SW2</b>.
+According to <a href="http://wiki.icomp.de/wiki/DE-9_Joystick"> wiki.icomp.de website about DE-9 joystick</a>, FIRE2/FIRE3 are pulled to VCC in case of C64 and to GND in case of Amiga. That is not an issue for joy2usb. Switch have to be toggled when adapter is off. Amiga approach is default -- if in your joystick FIRE2/FIRE3 are pulled to GND, and C64 approach is redundant for you than you do not need to solder <b>U2, C1, C2, R1, R2, R3, D1</b> and <b>SW2</b>.
 
 Two footprints are not trivial: DB9 male socket (<b>J1</b>) and SPDT switch (<b>SW2</b>).
 
@@ -33,9 +33,11 @@ BOM:
 | Qty	| Reference(s) | Description |
 |-----|--------------|-------------|
 |2 | C1, C2	| ceramic capacitors 100nF |
+|1 | D1 | LED 3mm |  
 |1 |	J1|	DB9 Male Connector <a href="https://www.tme.eu/pl/en/details/ld09p13a4gx00lf/d-sub-plugs-and-sockets/amphenol-communications-solutions/">   LD09P13A4GX00LF Amphenol</a> |
 |1 |	J2|	2x4 Pinheader. pitch terminal: 2.54mm |
-|2 | R1, R2	| resistors 10KΩ |
+|1 | R1 | resistor for D1 |
+|2 | R2, R3	| resistors 10KΩ |
 |1 | SW1 | Tact switch from Arduino breadboard projects |
 |1 | SW2 | <a href="https://www.tme.eu/pl/en/details/mfp1220/slide-switches/knitter-switch/mfp-1220">Switch SPDT MFP 1220 KNITTER-SWITCH</a> |
 |1 | U1 |	DIP20 socket (width 15.24mm) + <a href="https://learn.sparkfun.com/tutorials/pro-micro--fio-v3-hookup-guide/hardware-overview-pro-micro">Arduino Pro Micro</a> |
