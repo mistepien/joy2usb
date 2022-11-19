@@ -380,7 +380,8 @@
         "name": "power",
         "nets": [
           "GND1",
-          "GND2"
+          "GND2",
+          "VCC"
         ],
         "pcb_color": "rgba(0, 0, 0, 0.000)",
         "schematic_color": "rgba(0, 0, 0, 0.000)",
@@ -401,8 +402,7 @@
         "name": "power2",
         "nets": [
           "Net-(D1-Pad2)",
-          "Net-(R1-Pad1)",
-          "VCC"
+          "Net-(R1-Pad1)"
         ],
         "pcb_color": "rgba(0, 0, 0, 0.000)",
         "schematic_color": "rgba(0, 0, 0, 0.000)",
