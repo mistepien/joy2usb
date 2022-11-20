@@ -19,7 +19,7 @@ The adapter has a toggle C64/Amiga for choosing C64 or Amiga approach for FIRE2/
 Two footprints are not trivial: DB9 male socket (<b>J1</b>) and SPDT switch (<b>SW2</b>).
 
 Officialy the <b>J1</b> footprint (joy2usb has been designed in <a href="https://www.kicad.org/">KiCad</a>) is "DSUB-9_Male_Horizontal_P2.77x2.84mm_EdgePinOffset9.90mm_Housed_MountingHolesOffset11.32mm"
-however it was chosen to fit <a href="https://www.tme.eu/pl/en/details/ld09p13a4gx00lf/d-sub-plugs-and-sockets/amphenol-communications-solutions/">   LD09P13A4GX00LF Amphenol</a>.
+however it was chosen to fit <a href="https://www.tme.eu/pl/en/details/ld09p13a4gx00lf/d-sub-plugs-and-sockets/amphenol-communications-solutions/">   LD09P13A4GX00LF Amphenol</a> (since PCB rev. 2.3 this oval pads version of this footprint is used).
 
 <b>SW2</b> supposed to be <a href="https://www.tme.eu/pl/en/details/mfp1220/slide-switches/knitter-switch/mfp-1220">Switch SPDT MFP 1220 KNITTER-SWITCH</a>, but it can be replaced with Pinheader 1x3/1x2 (pitch terminal 2.54mm) + jumper.
 
