@@ -1,5 +1,5 @@
-![alt text](https://github.com/mistepien/joy2usb/blob/main/front.png)
-![alt text](https://github.com/mistepien/joy2usb/blob/main/back.png)
+![alt text](https://github.com/mistepien/joy2usb/blob/main/top.svg)
+![alt text](https://github.com/mistepien/joy2usb/blob/main/bottom.svg)
 
 # joy2usb
 Atari-like joystick adapter to USB.
