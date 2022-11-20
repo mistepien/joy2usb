@@ -1527,7 +1527,7 @@
     (uuid 0dcce0bd-aa77-40a7-aa11-13358cb7d8b3)
     (property "Reference" "SW2" (id 0) (at 124.46 106.68 0))
     (property "Value" "SW_SPDT" (id 1) (at 124.46 104.14 0))
-    (property "Footprint" "Misc:MFP_1220_KNITTER_SWITCH_SPDT" (id 2) (at 124.46 99.06 0)
+    (property "Footprint" "Misc:MFP_1220_KNITTER_SWITCH_SPDT_Oval" (id 2) (at 124.46 99.06 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Datasheet" "~" (id 3) (at 124.46 99.06 0)
@@ -1939,7 +1939,7 @@
     (property "Value" "DB9_Male" (id 1) (at 251.46 57.1499 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
-    (property "Footprint" "Connector_Dsub:DSUB-9_Male_Horizontal_P2.77x2.84mm_EdgePinOffset9.90mm_Housed_MountingHolesOffset11.32mm" (id 2) (at 246.38 55.88 0)
+    (property "Footprint" "Misc:DSUB-9_Male_Horizontal_P2.77x2.84mm_EdgePinOffset9.90mm_Housed_OVAL_MountingHolesOffset11.32mm" (id 2) (at 246.38 55.88 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Datasheet" " ~" (id 3) (at 246.38 55.88 0)
@@ -2422,7 +2422,7 @@
       (reference "H4") (unit 1) (value "MountingHole") (footprint "MountingHole:MountingHole_3.5mm")
     )
     (path "/904b9dce-e0fa-4996-95ed-5106b4f66a12"
-      (reference "J1") (unit 1) (value "DB9_Male") (footprint "Connector_Dsub:DSUB-9_Male_Horizontal_P2.77x2.84mm_EdgePinOffset9.90mm_Housed_MountingHolesOffset11.32mm")
+      (reference "J1") (unit 1) (value "DB9_Male") (footprint "Misc:DSUB-9_Male_Horizontal_P2.77x2.84mm_EdgePinOffset9.90mm_Housed_OVAL_MountingHolesOffset11.32mm")
     )
     (path "/aa99628a-edde-4438-a929-0fc1f87b7e93"
       (reference "J2") (unit 1) (value "Conn_02x04_Odd_Even") (footprint "Connector_PinHeader_2.54mm:PinHeader_2x04_P2.54mm_Vertical")
@@ -2440,7 +2440,7 @@
       (reference "SW1") (unit 1) (value "RST") (footprint "Button_Switch_THT:SW_PUSH_6mm_H4.3mm")
     )
     (path "/0dcce0bd-aa77-40a7-aa11-13358cb7d8b3"
-      (reference "SW2") (unit 1) (value "SW_SPDT") (footprint "Misc:MFP_1220_KNITTER_SWITCH_SPDT")
+      (reference "SW2") (unit 1) (value "SW_SPDT") (footprint "Misc:MFP_1220_KNITTER_SWITCH_SPDT_Oval")
     )
     (path "/5402cd64-4343-4e58-a540-d14fb99563fb"
       (reference "U1") (unit 1) (value "Arduino_Pro_Micro") (footprint "Package_DIP:DIP-24_W15.24mm_Socket_LongPads")
