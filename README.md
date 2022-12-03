@@ -25,7 +25,7 @@ however it was chosen to fit <a href="https://www.tme.eu/pl/en/details/ld09p13a4
 
 <b>J2</b> is redundant -- you can use it to add some new features like autofire switch or sth.
 
-Sometimes during uploading code to Arduino board you may face some issues -- then you will need to uses RESET -- so <b>SW1</b> can be useful if you like to develope your own code.
+Sometimes during uploading code to Arduino board you may face some issues -- then you will need to use RESET -- so <b>SW1</b> can be useful if you like to develope your own code.
 
 BOM:
 | Qty	| Reference(s) | Description |
