@@ -54,17 +54,10 @@ byte C64Mode = 0;
 
 void setup() {
 DDRE &= ~bit(6); PORTE |= bit(6); //INPUT_PULLUP FOR C64/AMIGA MODE SWITCH
-C64Mode = (1 ^ bitRead(PINE,6)); //READ C64/AMIGA MODE SWITCH STATE
-
 DDRC |= bit(6); //F2F3MODE as OUTPUT
+PORTC &= ~bit(6); //F2F3MODE as LOW 
+
 DDRD &= ~B00011111; PORTD |=  B00011111; //PD0-PD4 as INPUT_PULLUP
-DDRB &= ~B01100000; //INPUT for F2 and F3
-if (C64Mode){ //FOR C64 -- INPUT + PULL_DOWN (via IC4066) -- INPUT IS SET ONE LINE ABOVE
-  PORTC |= bit(6); //F2F3MODE as HIGH
-} else {      //FOR AMIGA -- INPUT_PULLUP + NO PULL_DOWN (switches in IC4066 are off)
-  PORTB |= B01100000; //INPUT_PULLUP for F2 and F3
-  PORTC &= ~bit(6); //F2F3MODE as LOW 
-}
 
 
   Joystick.begin(false);
@@ -75,9 +68,20 @@ if (C64Mode){ //FOR C64 -- INPUT + PULL_DOWN (via IC4066) -- INPUT IS SET ONE LI
   
   delay(3000); /*very ugly and dirty hack
                 without that delay() joystick will not
-                be centered at the beginning
+                be centered at the beginning (that is an
+                issue with Joystick.sendState();
                 */
-  Joystick.sendState();
+
+DDRB &= ~B01100000; //INPUT for F2 and F3
+C64Mode = (1 ^ bitRead(PINE,6)); //READ C64/AMIGA MODE SWITCH STATE
+if (C64Mode){ //FOR C64 -- INPUT + PULL_DOWN (via IC4066) -- INPUT IS SET ONE LINE ABOVE
+  PORTC |= bit(6); //F2F3MODE as HIGH
+} else {      //FOR AMIGA -- INPUT_PULLUP + NO PULL_DOWN (switches in IC4066 are off)
+  PORTB |= B01100000; //INPUT_PULLUP for F2 and F3
+  PORTC &= ~bit(6); //F2F3MODE as LOW 
+}
+               
+Joystick.sendState();
 
 /*turn off RX and TX LEDS
  * on permanent basis
