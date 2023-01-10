@@ -1,7 +1,7 @@
 /*  joy2usb (simple version)
  *  Author: mistepien@wp.pl
  *
- *  Copyright (c) 2022 Michał Stępień
+ *  Copyright (c) 2022, 2023 Michał Stępień
  *  
  *  GNU GENERAL PUBLIC LICENSE
  *  Version 3, 29 June 2007
@@ -56,11 +56,25 @@ byte C64Mode = 0;
 
 void setup() { 
 DDRE &= ~bit(6); PORTE |= bit(6); //SET INPUT_PULLUP FOR C64/AMIGA MODE SWITCH
-C64Mode = (1 ^ bitRead(PINE,6)); //READ C64/AMIGA MODE SWITCH STATE
-  
 DDRC |= bit(6); //F2F3MODE as OUTPUT
+PORTC &= ~bit(6); //F2F3MODE as LOW 
+
 DDRD &= ~B00011111; PORTD |=  B00011111; //PD0-PD4 as INPUT_PULLUP
+
+  Joystick.setXAxisRange(-1, 1);
+  Joystick.setYAxisRange(-1, 1);
+  Joystick.begin(false);
+  Joystick.setXAxis(0);
+  Joystick.setYAxis(0);
+
+  delay(1500); /*very ugly and dirty hack
+                without that delay() joystick will not
+                be centered at the beginning
+                */
+  Joystick.sendState();
+
 DDRB &= ~B01100000; //INPUT for F2 and F3
+C64Mode = (1 ^ bitRead(PINE,6)); //READ C64/AMIGA MODE SWITCH STATE  
 if (C64Mode){ //FOR C64 -- INPUT + PULL_DOWN (via IC4066) -- INPUT IS SET ONE LINE ABOVE
   PORTC |= bit(6); //F2F3MODE as HIGH
 } else {      //FOR AMIGA -- INPUT_PULLUP + NO PULL_DOWN (switches in IC4066 are off)
@@ -68,18 +82,7 @@ if (C64Mode){ //FOR C64 -- INPUT + PULL_DOWN (via IC4066) -- INPUT IS SET ONE LI
   PORTC &= ~bit(6); //F2F3MODE as LOW 
 }
 
-  Joystick.begin(false);
-  Joystick.setXAxisRange(-1, 1);
-  Joystick.setYAxisRange(-1, 1);
-  Joystick.setXAxis(0);
-  Joystick.setYAxis(0);
-
-  delay(3000); /*very ugly and dirty hack
-                without that delay() joystick will not
-                be centered at the beginning
-                */
-  Joystick.sendState();
-
+  
 /* turn off RX and TX LEDS
  * on permanent basis
  * 
