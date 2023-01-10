@@ -1,24 +1,24 @@
 /*  joy2usb
  *  Author: mistepien@wp.pl
  *
- *  Copyright (c) 2022 Michał Stępień
- *  
+ *  Copyright (c) 2022, 2023 Michał Stępień
+ *
  *  GNU GENERAL PUBLIC LICENSE
  *  Version 3, 29 June 2007
- *  
+ *
  *  This program is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
  *  the Free Software Foundation, either version 3 of the License, or
  *  (at your option) any later version.
- *  
+ *
  *  This program is distributed in the hope that it will be useful,
  *  but WITHOUT ANY WARRANTY; without even the implied warranty of
  *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  *  GNU General Public License for more details.
- *  
+ *
  *  You should have received a copy of the GNU General Public License
  *  along with this program.  If not, see <https://www.gnu.org/licenses/>.
- *  
+ *
  */
 
 
@@ -31,7 +31,6 @@
 
 const byte minimal_axis_time = 8;
 const byte minimal_button_time = 10;
-                                    
 
 #ifdef DEBUG
 // for performance monitor
@@ -60,13 +59,13 @@ PORTC &= ~bit(6); //F2F3MODE as LOW
 DDRD &= ~B00011111; PORTD |=  B00011111; //PD0-PD4 as INPUT_PULLUP
 
 
-  Joystick.begin(false);
   Joystick.setXAxisRange(-1, 1);
   Joystick.setYAxisRange(-1, 1);
+  Joystick.begin(false);
   Joystick.setXAxis(0);
   Joystick.setYAxis(0);
-  
-  delay(3000); /*very ugly and dirty hack
+ 
+  delay(1500); /*very ugly and dirty hack
                 without that delay() joystick will not
                 be centered at the beginning (that is an
                 issue with Joystick.sendState();
@@ -80,7 +79,7 @@ if (C64Mode){ //FOR C64 -- INPUT + PULL_DOWN (via IC4066) -- INPUT IS SET ONE LI
   PORTB |= B01100000; //INPUT_PULLUP for F2 and F3
   PORTC &= ~bit(6); //F2F3MODE as LOW 
 }
-               
+
 Joystick.sendState();
 
 /*turn off RX and TX LEDS
@@ -167,10 +166,10 @@ byte axisYchanged = 0;
             JOY_L = 1 ^ JOY_L;
           }
       Joystick.setXAxis(JOY_R - JOY_L);
-    }  
-} 
+    }
+}
 
-  if ( changedButtons ) { //BUTTONS SECTION    
+  if ( changedButtons ) { //BUTTONS SECTION
     for (byte index = 0; index < 3; index++) {
        if (bitRead(changedButtons,index)) {
         if (current_time - prev_button_time[index] > minimal_button_time) {
@@ -182,7 +181,7 @@ byte axisYchanged = 0;
         }
        }
     }
-  } 
+  }
    Joystick.sendState(); //ONE common send.State for AXISES AND BUTTONS SECTIONS
 }
 
@@ -196,7 +195,5 @@ byte axisYchanged = 0;
       timer = micros();
     }
     loops++;  //increassing a counter
-  
 #endif
-  
 }
