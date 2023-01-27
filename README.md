@@ -9,7 +9,7 @@ Atari-like joystick adapter to USB.
 
 ATmega 32U4 has a hardware support for fullspeed USB, thus <a href="https://wiki.archlinux.org/title/mouse_polling_rate">polling rate 1000Hz</a> is not an issue for that chip.
 
-To order a PCB you can use <a href="https://github.com/mistepien/joy2usb/blob/main/gerber.zip">gerber file<a>.
+You can use the <a href="https://github.com/mistepien/joy2usb/blob/main/gerber.zip">gerber file<a> to order the PCB.
 
 Attached code (so-called sketches *ino) uses port registers so that is quite efficient, debouncing is done without delay() function. In  <a href="https://github.com/mistepien/joy2usb/blob/main/firmware/joy2usb.ino">joy2usb.ino</a> all four UP/DOWN/LEFT/RIGHT switches 
 are debounced separatelly, while in in <a href="https://github.com/mistepien/joy2usb/blob/main/firmware/joy2usb_simple.ino">joy2usb_simple.ino</a> rather axises are debounced, not UP/DOWN/LEFT/RIGHT switches what results in slightly faster and shorter code.
