@@ -21,7 +21,7 @@ Two footprints are not trivial: DB9 male socket (<b>J1</b>) and SPDT switch (<b>
 Officialy the <b>J1</b> footprint (joy2usb has been designed in <a href="https://www.kicad.org/">KiCad</a>) is "DSUB-9_Male_Horizontal_P2.77x2.84mm_EdgePinOffset9.90mm_Housed_MountingHolesOffset11.32mm"
 however it was chosen to fit <a href="https://www.tme.eu/pl/en/details/ld09p13a4gx00lf/d-sub-plugs-and-sockets/amphenol-communications-solutions/">   LD09P13A4GX00LF Amphenol</a> (since PCB rev. 2.3 oval pads version of this footprint is used).
 
-<b>SW2</b> supposed to be <a href="https://www.tme.eu/pl/en/details/mfp1220/slide-switches/knitter-switch/mfp-1220">Switch SPDT MFP 1220 KNITTER-SWITCH</a>, but it can be replaced with Pinheader 1x3/1x2 (pitch terminal 2.54mm) + jumper.
+<b>SW2</b> supposed to be <a href="https://www.tme.eu/pl/en/details/mfp1220/slide-switches/knitter-switch/mfp-1220">Switch SPDT MFP 1220 KNITTER-SWITCH</a>, but it can be replaced with Pinheader 1x3/1x2 (pitch terminal 2.54mm) + jumper or any other SPDT switch with 3 pins and pitch terminal 2.54mm (e.g. <a href="https://www.tme.eu/pl/details/eg1218/przelaczniki-suwakowe/e-switch/">EG1218 E-SWITCH</a>).
 
 <b>J2</b> is redundant -- you can use it to add some new features like autofire switch or sth.
 
