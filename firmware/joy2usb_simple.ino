@@ -1,24 +1,24 @@
 /*  joy2usb (simple version)
  *  Author: mistepien@wp.pl
  *
- *  Copyright (c) 2022, 2023 Michał Stępień
- *  
+ *  Copyright (c) 2022 Michał Stępień
+ *
  *  GNU GENERAL PUBLIC LICENSE
  *  Version 3, 29 June 2007
- *  
+ *
  *  This program is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
  *  the Free Software Foundation, either version 3 of the License, or
  *  (at your option) any later version.
- *  
+ *
  *  This program is distributed in the hope that it will be useful,
  *  but WITHOUT ANY WARRANTY; without even the implied warranty of
  *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  *  GNU General Public License for more details.
- *  
+ *
  *  You should have received a copy of the GNU General Public License
  *  along with this program.  If not, see <https://www.gnu.org/licenses/>.
- *  
+ *
  */
 
 
@@ -28,11 +28,22 @@
 
 //#define DEBUG
 
-const byte minimal_button_time[5] = { minimal_btime * 5,
-                                      minimal_btime * 4,
-                                      minimal_btime * 4,
-                                      minimal_btime * 5,
-                                      minimal_btime * 5 };
+byte minimal_button_time[5];
+void debouncing(bool mode = 1) {
+  if ( mode ) {
+  minimal_button_time[0] = minimal_btime * 5;
+  minimal_button_time[1] = minimal_btime * 4;
+  minimal_button_time[2] = minimal_btime * 4;
+  minimal_button_time[3] = minimal_btime * 5;
+  minimal_button_time[4] = minimal_btime * 5;
+  } else {
+  minimal_button_time[0] = 0;
+  minimal_button_time[1] = 0;
+  minimal_button_time[2] = 0;
+  minimal_button_time[3] = 0;
+  minimal_button_time[4] = 0;
+  }
+}
 
 
 #ifdef DEBUG
@@ -54,27 +65,31 @@ Joystick_ Joystick(JOYSTICK_DEFAULT_REPORT_ID, JOYSTICK_TYPE_JOYSTICK,
 
 byte C64Mode = 0;
 
-void setup() { 
-DDRE &= ~bit(6); PORTE |= bit(6); //SET INPUT_PULLUP FOR C64/AMIGA MODE SWITCH
+void setup() {
+DDRF &= ~bit(4); PORTF |= bit(4); //INPUT_PULLUP FOR DEBOUNCING SWITCH
+  
+DDRE &= ~bit(6); PORTE |= bit(6); //INPUT_PULLUP FOR C64/AMIGA MODE SWITCH
+
 DDRC |= bit(6); //F2F3MODE as OUTPUT
 PORTC &= ~bit(6); //F2F3MODE as LOW 
 
 DDRD &= ~B00011111; PORTD |=  B00011111; //PD0-PD4 as INPUT_PULLUP
+
 
   Joystick.setXAxisRange(-1, 1);
   Joystick.setYAxisRange(-1, 1);
   Joystick.begin(false);
   Joystick.setXAxis(0);
   Joystick.setYAxis(0);
-
+ 
   delay(1500); /*very ugly and dirty hack
                 without that delay() joystick will not
-                be centered at the beginning
+                be centered at the beginning (that is an
+                issue with Joystick.sendState();
                 */
-  Joystick.sendState();
 
 DDRB &= ~B01100000; //INPUT for F2 and F3
-C64Mode = (1 ^ bitRead(PINE,6)); //READ C64/AMIGA MODE SWITCH STATE  
+C64Mode = (1 ^ bitRead(PINE,6)); //READ C64/AMIGA MODE SWITCH STATE
 if (C64Mode){ //FOR C64 -- INPUT + PULL_DOWN (via IC4066) -- INPUT IS SET ONE LINE ABOVE
   PORTC |= bit(6); //F2F3MODE as HIGH
 } else {      //FOR AMIGA -- INPUT_PULLUP + NO PULL_DOWN (switches in IC4066 are off)
@@ -82,7 +97,12 @@ if (C64Mode){ //FOR C64 -- INPUT + PULL_DOWN (via IC4066) -- INPUT IS SET ONE LI
   PORTC &= ~bit(6); //F2F3MODE as LOW 
 }
 
-  
+
+                
+  debouncing(bitRead(PINF,4));
+                
+  Joystick.sendState();
+
 /* turn off RX and TX LEDS
  * on permanent basis
  * 
@@ -105,7 +125,6 @@ byte prev_joy;
 void loop() {
 byte pinb = 0;
 byte pind = 0;
-
   
 pind = ~PIND & B00011111; //clear PD5,PD6 and PD7
 if (C64Mode){

@@ -29,8 +29,10 @@
 
 //#define DEBUG
 
-const byte minimal_axis_time = 8;
-const byte minimal_button_time = 10;
+byte minimal_axis_time;
+byte minimal_button_time;
+
+
 
 #ifdef DEBUG
 // for performance monitor
@@ -49,10 +51,23 @@ Joystick_ Joystick(JOYSTICK_DEFAULT_REPORT_ID, JOYSTICK_TYPE_JOYSTICK,
                    false, false, false);  // No accelerator, brake, or steering
 
 
+void debouncing(bool mode = 1) {
+  if ( mode ) {
+      minimal_axis_time = 8;
+      minimal_button_time = 10;
+  } else {
+      minimal_axis_time = 0;
+      minimal_button_time = 0;
+  }
+}
+
 byte C64Mode = 0;
 
 void setup() {
+DDRF &= ~bit(4); PORTF |= bit(4); //INPUT_PULLUP FOR DEBOUNCING SWITCH
+  
 DDRE &= ~bit(6); PORTE |= bit(6); //INPUT_PULLUP FOR C64/AMIGA MODE SWITCH
+
 DDRC |= bit(6); //F2F3MODE as OUTPUT
 PORTC &= ~bit(6); //F2F3MODE as LOW 
 
@@ -80,6 +95,8 @@ if (C64Mode){ //FOR C64 -- INPUT + PULL_DOWN (via IC4066) -- INPUT IS SET ONE LI
   PORTC &= ~bit(6); //F2F3MODE as LOW 
 }
 
+debouncing(bitRead(PINF,4));
+
 Joystick.sendState();
 
 /*turn off RX and TX LEDS
@@ -106,6 +123,7 @@ void loop() {
 byte pinb;
 byte pind;
 byte current_state;
+
 
 pind = ~PIND & B00011111; //clear PD5,PD6 and PD7
 if (C64Mode){
