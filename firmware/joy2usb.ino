@@ -63,10 +63,23 @@ void debouncing(bool mode = 1) {
 
 byte C64Mode = 0;
 
+#define SAMPLES 10
 void setup() {
 DDRF &= ~bit(4); PORTF |= bit(4); //INPUT_PULLUP FOR DEBOUNCING SWITCH
   
 DDRE &= ~bit(6); PORTE |= bit(6); //INPUT_PULLUP FOR C64/AMIGA MODE SWITCH
+//READ C64/AMIGA MODE SWITCH STATE
+  byte C64ModeTEMP = 0;  
+  for (byte index = 0; index  < SAMPLES; index++) { 
+  //READ C64/AMIGA SWITCH MODE
+  delayMicroseconds(30);
+  C64ModeTEMP = (1 ^ bitRead(PINE,6)) + C64ModeTEMP; 
+  }
+  if ( C64ModeTEMP / SAMPLES > 0.5 ) {
+    C64Mode = 1;
+  } else {
+    C64Mode = 0;
+  }
 
 DDRC |= bit(6); //F2F3MODE as OUTPUT
 PORTC &= ~bit(6); //F2F3MODE as LOW 
@@ -87,7 +100,6 @@ DDRD &= ~B00011111; PORTD |=  B00011111; //PD0-PD4 as INPUT_PULLUP
                 */
 
 DDRB &= ~B01100000; //INPUT for F2 and F3
-C64Mode = (1 ^ bitRead(PINE,6)); //READ C64/AMIGA MODE SWITCH STATE
 if (C64Mode){ //FOR C64 -- INPUT + PULL_DOWN (via IC4066) -- INPUT IS SET ONE LINE ABOVE
   PORTC |= bit(6); //F2F3MODE as HIGH
 } else {      //FOR AMIGA -- INPUT_PULLUP + NO PULL_DOWN (switches in IC4066 are off)
