@@ -11,7 +11,7 @@ ATmega 32U4 has a hardware support for fullspeed USB, thus <a href="https://wiki
 
 You can use the <a href="https://github.com/mistepien/joy2usb/blob/main/production/joy2usb_6.2_2023-10-14_00-56-38/joy2usb_6.2.zip">gerber file<a> to order the PCB.
 
-Attached   <a href="https://github.com/mistepien/joy2usb/blob/main/firmware/joy2usb.ino">code</a> uses port registers so that is quite efficient, debouncing is done without delay() function.
+Attached   <a href="https://github.com/mistepien/joy2usb/blob/main/joy2usb.ino">code</a> uses port registers so that is quite efficient, debouncing is done without delay() function.
 
 The adapter has a toggle C64/Amiga for choosing C64 or Amiga approach for FIRE2/FIRE3. According to <a href="http://wiki.icomp.de/wiki/DE-9_Joystick"> wiki.icomp.de website about DE-9 joystick</a>, FIRE2/FIRE3 are pulled to VCC in case of C64 and to GND in case of Amiga. That is not an issue for joy2usb.
 
