@@ -13,7 +13,7 @@ You can use the <a href="https://github.com/mistepien/joy2usb/blob/main/producti
 
 Attached   <a href="https://github.com/mistepien/joy2usb/blob/main/joy2usb.ino">code</a> uses port registers so that is quite efficient, debouncing is done without delay() function.
 
-The adapter has a toggle C64/Amiga for choosing C64 or Amiga approach for FIRE2/FIRE3. According to <a href="http://wiki.icomp.de/wiki/DE-9_Joystick"> wiki.icomp.de website about DE-9 joystick</a>, FIRE2/FIRE3 are pulled to VCC in case of C64 and to GND in case of Amiga. That is not an issue for joy2usb.
+The adapter has a toggle C64/Amiga for choosing C64 or Amiga approach for FIRE2/FIRE3. According to <a href="http://wiki.icomp.de/wiki/DE-9_Joystick"> wiki.icomp.de website about DE-9 joystick</a>, FIRE2/FIRE3 are pulled to VCC in case of C64 and to GND in case of Amiga. That is not an issue for joy2usb due to XOR magic.
 
 Two footprints are not trivial: DB9 male socket (<b>J1</b>) and SPDT switch (<b>SW2</b>).
 
