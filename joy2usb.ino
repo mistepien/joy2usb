@@ -32,12 +32,12 @@
 #define FIRE3 6       //PINB
 
 #include <Joystick.h>  //https://github.com/MHeironimus/ArduinoJoystickLibrary
-
+#include <math.h>
 
 byte minimal_axis_time;
 byte minimal_button_time;
 
-
+byte pinf = 0;
 
 Joystick_ Joystick(JOYSTICK_DEFAULT_REPORT_ID, JOYSTICK_TYPE_JOYSTICK,
                    3, 0,                  // Button Count, Hat Switch Count
@@ -58,20 +58,22 @@ void debouncing(bool mode = 1) {
 }
 
 void setup() {
+  Serial.begin(9600);
   bitSet(DDRE, 6); bitClear(PORTE, 6); //STATUSLED(PE6) as OUTPUT + set to LOW
 
 
   bitClear(DDRF, 4); bitSet(PORTF, 4); //INPUT_PULLUP FOR DEBOUNCING SWITCH
+  bitClear(DDRF, 5); bitSet(PORTF, 5); //INPUT_PULLUP FOR FIRE1 CPS MEASURE
+  bitClear(DDRF, 6); bitSet(PORTF, 6);
+  bitClear(DDRF, 7); bitSet(PORTF, 7);
 
   DDRD &= ~( bit(UP_BTN) | bit(DOWN_BTN) | bit(LEFT_BTN) | bit(RIGHT_BTN) | bit(FIRE1) | bit(C64MODE_PIN)) ;  //PD0-PD5 as INPUT
   PORTD |= ( bit(UP_BTN) | bit(DOWN_BTN) | bit(LEFT_BTN) | bit(RIGHT_BTN) | bit(FIRE1)); //FIRE1,UP,DOWN,LEFT,RIGT as INPUT_PULLUP
-  PORTD &= ~(bit(C64MODE_PIN)); //C64MODE_PIN as INPUT_NO_PULL_UP
 
-  DDRB &= ~(bit(FIRE2) | bit(FIRE3) | bit(PB1) | bit(PB2) | bit(PB3) | bit(PB4));  //FIRE2 and FIRE3 as INPUT
-  PORTB &= ~(bit(FIRE2) | bit(FIRE3));  //FIRE2 and FIRE3 as INPUT_NO_PULL_UP
+  DDRB &= ~( bit(FIRE2) | bit(FIRE3)); //FIRE2 and FIRE3 as INPUT
 
   //UNUSED PINS
-  DDRB &= ~(bit(PB1) | bit(PB2) | bit(PB3) | bit(PB4));  //PB1-PB4 as INPUT_PULLUP -- unused_pins
+  DDRB &= ~( bit(PB1) | bit(PB2) | bit(PB3) | bit(PB4));  //PB1-PB4 as INPUT_PULLUP -- unused_pins
   PORTB  |= bit(PB1) | bit(PB2) | bit(PB3) | bit(PB4);
   bitClear(DDRC, 6); bitSet(PORTC, 6); //INPUT_PULLUP PC6 -- unused pin
 
@@ -133,13 +135,11 @@ void joystate_to_usb(byte joystate) {
   byte current_axises = joystate & B00001111;
   byte current_buttons = (joystate >> 4);
 
-  //Serial.println(current_axises, BIN);
-
   byte changedAxises = current_axises ^ prev_axises;
   byte changedButtons = current_buttons ^ prev_buttons;
 
   if (changedAxises || changedButtons) {
-    debouncing(bitRead(PINF, 4));
+    debouncing(bitRead(pinf, 4));
     unsigned long current_time = millis();  //ONE common millis() for AXISES AND BUTTONS SECTIONS
 
     //####################################################
@@ -200,11 +200,41 @@ void joystate_to_usb(byte joystate) {
     }
   }
   Joystick.sendState();  //ONE common send.State for AXISES AND BUTTONS SECTIONS
+}
 
+byte prev_fire1_state = 0;
+int counter = 0;
+unsigned long prev_time = 0;
+const byte probe_time_SEC = 2;
+void measure_freq() {
+  byte pind = ~PIND;
+  bool current_fire1_state = bitRead(pind, FIRE1);
+  bool changed_fire1_state = current_fire1_state ^ prev_fire1_state;
+  if ( changed_fire1_state ) {
+    prev_fire1_state = current_fire1_state;
+    if ( current_fire1_state ) {
+      counter++;
+    };
+  }
+
+  unsigned long current_time = millis();
+  if (  current_time - prev_time >  probe_time_SEC * 1000 ) {
+    Serial.print(current_time);
+    Serial.print(": CPS: ");
+    float cps = (float) counter / ( float ) probe_time_SEC;
+    Serial.println(cps, 1);
+    prev_time = millis();
+    counter = 0;
+  }
 }
 
 void loop() {
   while (1) {
-    joystate_to_usb(joystate_update());
+    pinf = PINF;
+    if ( bitRead(pinf, 5) ) {
+      joystate_to_usb(joystate_update());
+    } else {
+      measure_freq();
+    }
   }
 }
