@@ -22,7 +22,7 @@ however it was chosen to fit <a href="https://www.tme.eu/pl/en/details/ld09p13a4
 
 <b>SW2</b> supposed to be <a href="https://www.tme.eu/pl/en/details/mfp1220/slide-switches/knitter-switch/mfp-1220">Switch SPDT MFP 1220 KNITTER-SWITCH</a>, but it can be replaced with Pinheader 1x3/1x2 (pitch terminal 2.54mm) + jumper or any other SPDT switch with 3 pins and pitch terminal 2.54mm (e.g. <a href="https://www.tme.eu/pl/details/eg1218/przelaczniki-suwakowe/e-switch/">EG1218 E-SWITCH</a>).
 
-<b>J2</b> is redundant -- you can use it to add some new features like autofire switch or sth. In attached firmware connecting PF4 to GND disables debouncing procedure.
+<b>J2</b> is redundant -- you can use it to add some new features like autofire switch or sth. In attached firmware connecting PF4 to GND disables debouncing procedure. <b>If you connect PF5 to GND you can read FIRE1 CPS ("$cat /dev/ttyACM0" in Linux).</b>
 
 Sometimes during uploading code to Arduino board you may face some issues -- then you will need to use RESET -- so <b>SW1</b> can be useful if you like to develope your own code.
 
