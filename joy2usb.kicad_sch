@@ -6,7 +6,7 @@
 
   (title_block
     (title "joy2usb")
-    (rev "6.2")
+    (rev "6.3")
     (company "mistepien@wp.pl")
   )
 
@@ -1168,7 +1168,7 @@
     )
     (pin "1" (uuid 197118f2-cd4f-4a9c-b54e-eb05bdd84072))
     (instances
-      (project "joy2usb-simple"
+      (project "joy2usb"
         (path "/597d0ee1-c37c-44ab-8511-e93942971702"
           (reference "#PWR019") (unit 1)
         )
@@ -1192,7 +1192,7 @@
       (effects (font (size 1.27 1.27)) hide)
     )
     (instances
-      (project "joy2usb-simple"
+      (project "joy2usb"
         (path "/597d0ee1-c37c-44ab-8511-e93942971702"
           (reference "H1") (unit 1)
         )
@@ -1218,7 +1218,7 @@
     (pin "1" (uuid 2b5a9d7d-f7b4-4038-8fe1-811ccd39cd87))
     (pin "2" (uuid 51f2f372-91db-4836-bab1-3f2e2d56bae2))
     (instances
-      (project "joy2usb-simple"
+      (project "joy2usb"
         (path "/597d0ee1-c37c-44ab-8511-e93942971702"
           (reference "D2") (unit 1)
         )
@@ -1248,7 +1248,7 @@
     )
     (pin "1" (uuid eea3f21c-ba5e-40ca-b136-0c9b42d10cee))
     (instances
-      (project "joy2usb-simple"
+      (project "joy2usb"
         (path "/597d0ee1-c37c-44ab-8511-e93942971702"
           (reference "#PWR025") (unit 1)
         )
@@ -1273,7 +1273,7 @@
     )
     (pin "1" (uuid 59ba0107-4e07-4add-b1ab-6d390e92a43e))
     (instances
-      (project "joy2usb-simple"
+      (project "joy2usb"
         (path "/597d0ee1-c37c-44ab-8511-e93942971702"
           (reference "#PWR07") (unit 1)
         )
@@ -1303,7 +1303,7 @@
     )
     (pin "1" (uuid c8aa282b-1d88-4fde-b6bc-c801bca5fd7c))
     (instances
-      (project "joy2usb-simple"
+      (project "joy2usb"
         (path "/597d0ee1-c37c-44ab-8511-e93942971702"
           (reference "#FLG01") (unit 1)
         )
@@ -1329,7 +1329,7 @@
     (pin "1" (uuid c03f291d-3b1e-4abd-b8f7-7f332a6eb5ad))
     (pin "2" (uuid 888bbdca-8d1c-4f70-b6d8-b09b6c24b6fa))
     (instances
-      (project "joy2usb-simple"
+      (project "joy2usb"
         (path "/597d0ee1-c37c-44ab-8511-e93942971702"
           (reference "D3") (unit 1)
         )
@@ -1360,7 +1360,7 @@
     (pin "1" (uuid 1d91f706-cb73-4557-af7b-ec4ee30afe4c))
     (pin "2" (uuid 2ff37a7f-f6fe-4613-ab35-f0d683079b19))
     (instances
-      (project "joy2usb-simple"
+      (project "joy2usb"
         (path "/597d0ee1-c37c-44ab-8511-e93942971702"
           (reference "R1") (unit 1)
         )
@@ -1390,7 +1390,7 @@
     )
     (pin "1" (uuid 8ef0507e-d3f1-425b-ac36-befcd4724d32))
     (instances
-      (project "joy2usb-simple"
+      (project "joy2usb"
         (path "/597d0ee1-c37c-44ab-8511-e93942971702"
           (reference "#PWR018") (unit 1)
         )
@@ -1438,7 +1438,7 @@
     (pin "8" (uuid 2eb081f5-b2d8-4197-a210-8a0d8287c871))
     (pin "9" (uuid 213c249f-5ac2-4fb2-a712-7a76b1bd4528))
     (instances
-      (project "joy2usb-simple"
+      (project "joy2usb"
         (path "/597d0ee1-c37c-44ab-8511-e93942971702"
           (reference "U1") (unit 1)
         )
@@ -1462,7 +1462,7 @@
       (effects (font (size 1.27 1.27)) hide)
     )
     (instances
-      (project "joy2usb-simple"
+      (project "joy2usb"
         (path "/597d0ee1-c37c-44ab-8511-e93942971702"
           (reference "H4") (unit 1)
         )
@@ -1487,7 +1487,7 @@
     )
     (pin "1" (uuid 2dad01cd-5e36-41db-9acb-22adf829b5f9))
     (instances
-      (project "joy2usb-simple"
+      (project "joy2usb"
         (path "/597d0ee1-c37c-44ab-8511-e93942971702"
           (reference "#FLG02") (unit 1)
         )
@@ -1513,7 +1513,7 @@
     (pin "1" (uuid f930169f-e977-4fd1-9020-d8e4b7617c09))
     (pin "2" (uuid 0b3f9849-d61a-467d-ae4b-96e4502c5b71))
     (instances
-      (project "joy2usb-simple"
+      (project "joy2usb"
         (path "/597d0ee1-c37c-44ab-8511-e93942971702"
           (reference "D1") (unit 1)
         )
@@ -1543,7 +1543,7 @@
     )
     (pin "1" (uuid fa17278e-47b7-4ca8-8899-9d363a1cee98))
     (instances
-      (project "joy2usb-simple"
+      (project "joy2usb"
         (path "/597d0ee1-c37c-44ab-8511-e93942971702"
           (reference "#PWR06") (unit 1)
         )
@@ -1573,7 +1573,7 @@
     )
     (pin "1" (uuid 0a7ddb2d-9946-4630-866e-ae2e72f6b3f5))
     (instances
-      (project "joy2usb-simple"
+      (project "joy2usb"
         (path "/597d0ee1-c37c-44ab-8511-e93942971702"
           (reference "#PWR017") (unit 1)
         )
@@ -1600,7 +1600,7 @@
     (pin "2" (uuid 694c32e4-fe82-498d-818b-7e2af9bc2e3a))
     (pin "3" (uuid c2f58fb2-33c8-4f82-a2a7-67735d6ddf2f))
     (instances
-      (project "joy2usb-simple"
+      (project "joy2usb"
         (path "/597d0ee1-c37c-44ab-8511-e93942971702"
           (reference "SW2") (unit 1)
         )
@@ -1638,7 +1638,7 @@
     (pin "8" (uuid a3ce622c-5d9d-4eee-84f0-1c397cf00f63))
     (pin "9" (uuid a1836c80-10e3-4af0-b0e0-9773cde5dc21))
     (instances
-      (project "joy2usb-simple"
+      (project "joy2usb"
         (path "/597d0ee1-c37c-44ab-8511-e93942971702"
           (reference "J1") (unit 1)
         )
@@ -1649,11 +1649,11 @@
   (symbol (lib_id "Device:R") (at 164.592 43.688 180) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 97a37935-0760-4760-aaef-eb47ae4ed921)
-    (property "Reference" "R5" (at 170.053 43.688 90)
-      (effects (font (size 1.27 1.27)))
+    (property "Reference" "R5" (at 166.37 42.418 0)
+      (effects (font (size 1.27 1.27)) (justify right))
     )
-    (property "Value" "RxΩ" (at 167.513 43.688 90)
-      (effects (font (size 1.27 1.27)))
+    (property "Value" "R10KΩ" (at 166.37 44.958 0)
+      (effects (font (size 1.27 1.27)) (justify right))
     )
     (property "Footprint" "misc:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal_Oval" (at 166.37 43.688 90)
       (effects (font (size 1.27 1.27)) hide)
@@ -1664,7 +1664,7 @@
     (pin "1" (uuid 9732ceb0-7782-4dd8-a9b8-363ba23a3973))
     (pin "2" (uuid 0bc2afaa-655e-4c02-88f0-4e96396f3864))
     (instances
-      (project "joy2usb-simple"
+      (project "joy2usb"
         (path "/597d0ee1-c37c-44ab-8511-e93942971702"
           (reference "R5") (unit 1)
         )
@@ -1695,7 +1695,7 @@
     (pin "1" (uuid fc5daf6c-ff29-490c-a6c2-27b46c53ec96))
     (pin "2" (uuid 1a192c32-f51b-4435-8fb4-249214e26b24))
     (instances
-      (project "joy2usb-simple"
+      (project "joy2usb"
         (path "/597d0ee1-c37c-44ab-8511-e93942971702"
           (reference "R2") (unit 1)
         )
@@ -1725,7 +1725,7 @@
     )
     (pin "1" (uuid 2fb7eaeb-bd5e-4f44-9db4-30c7e0b5b0a2))
     (instances
-      (project "joy2usb-simple"
+      (project "joy2usb"
         (path "/597d0ee1-c37c-44ab-8511-e93942971702"
           (reference "#PWR016") (unit 1)
         )
@@ -1750,7 +1750,7 @@
     )
     (pin "1" (uuid 9515bfa0-f361-4be1-b2b1-dbb3d06828b1))
     (instances
-      (project "joy2usb-simple"
+      (project "joy2usb"
         (path "/597d0ee1-c37c-44ab-8511-e93942971702"
           (reference "#PWR03") (unit 1)
         )
@@ -1787,7 +1787,7 @@
     (pin "7" (uuid 0f7386b5-6060-4fc5-a210-71cdd97bfbc1))
     (pin "8" (uuid f6010619-f570-4b02-aad1-a694c66254e9))
     (instances
-      (project "joy2usb-simple"
+      (project "joy2usb"
         (path "/597d0ee1-c37c-44ab-8511-e93942971702"
           (reference "J2") (unit 1)
         )
@@ -1813,7 +1813,7 @@
     (pin "1" (uuid fb59c435-4fa0-4551-9224-63b3136ddc1f))
     (pin "2" (uuid 690dd93a-056f-48ea-afa2-038c03a509df))
     (instances
-      (project "joy2usb-simple"
+      (project "joy2usb"
         (path "/597d0ee1-c37c-44ab-8511-e93942971702"
           (reference "R3") (unit 1)
         )
@@ -1843,7 +1843,7 @@
     )
     (pin "1" (uuid 71d589f1-bef7-4b3e-8877-fccfd983b54b))
     (instances
-      (project "joy2usb-simple"
+      (project "joy2usb"
         (path "/597d0ee1-c37c-44ab-8511-e93942971702"
           (reference "#PWR02") (unit 1)
         )
@@ -1872,7 +1872,7 @@
       (effects (font (size 1.27 1.27)) hide)
     )
     (instances
-      (project "joy2usb-simple"
+      (project "joy2usb"
         (path "/597d0ee1-c37c-44ab-8511-e93942971702"
           (reference "H3") (unit 1)
         )
@@ -1897,7 +1897,7 @@
     )
     (pin "1" (uuid 92582e18-bfdd-4edd-b95a-22237430b983))
     (instances
-      (project "joy2usb-simple"
+      (project "joy2usb"
         (path "/597d0ee1-c37c-44ab-8511-e93942971702"
           (reference "#PWR020") (unit 1)
         )
@@ -1923,7 +1923,7 @@
     (pin "1" (uuid d48bc117-7f00-45e7-9060-8988d0b56607))
     (pin "2" (uuid 2fe35ba2-f165-4a15-8d82-48431c3b7a54))
     (instances
-      (project "joy2usb-simple"
+      (project "joy2usb"
         (path "/597d0ee1-c37c-44ab-8511-e93942971702"
           (reference "R4") (unit 1)
         )
@@ -1952,7 +1952,7 @@
       (effects (font (size 1.27 1.27)) hide)
     )
     (instances
-      (project "joy2usb-simple"
+      (project "joy2usb"
         (path "/597d0ee1-c37c-44ab-8511-e93942971702"
           (reference "H2") (unit 1)
         )
@@ -1977,7 +1977,7 @@
     )
     (pin "1" (uuid d24c6e6a-75f2-4084-bdba-c1ed9e4a4236))
     (instances
-      (project "joy2usb-simple"
+      (project "joy2usb"
         (path "/597d0ee1-c37c-44ab-8511-e93942971702"
           (reference "#PWR01") (unit 1)
         )
@@ -2007,7 +2007,7 @@
     )
     (pin "1" (uuid 42051cd6-b3b0-4232-bd17-8d8c8751c2d9))
     (instances
-      (project "joy2usb-simple"
+      (project "joy2usb"
         (path "/597d0ee1-c37c-44ab-8511-e93942971702"
           (reference "#PWR026") (unit 1)
         )
@@ -2033,7 +2033,7 @@
     (pin "1" (uuid bbca56f9-e7b1-4c4b-adf1-8d60b7fab746))
     (pin "2" (uuid e7d31d8d-1cf5-4a30-83be-3d2c55f4ec5b))
     (instances
-      (project "joy2usb-simple"
+      (project "joy2usb"
         (path "/597d0ee1-c37c-44ab-8511-e93942971702"
           (reference "SW1") (unit 1)
         )
@@ -2058,7 +2058,7 @@
     )
     (pin "1" (uuid c6d34893-30e8-462e-ad29-407043bcc10e))
     (instances
-      (project "joy2usb-simple"
+      (project "joy2usb"
         (path "/597d0ee1-c37c-44ab-8511-e93942971702"
           (reference "#PWR027") (unit 1)
         )
